@@ -5,6 +5,7 @@ using System.Data;
 using System.Data.SqlClient;
 using System.Drawing;
 using System.Linq;
+using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -15,6 +16,7 @@ namespace UKK_SPP_Alvito.Views
     {
         Koneksi conn = new Koneksi();
         DataTable dt = new DataTable();
+        SqlDataAdapter sda;
         public DataSPP()
         {
             InitializeComponent();
@@ -22,9 +24,10 @@ namespace UKK_SPP_Alvito.Views
 
         private void DataSPP_Load(object sender, EventArgs e)
         {
-            // TODO: This line of code loads data into the 'dB_SPPDataSetSPP.tb_spp' table. You can move, or remove it, as needed.
-            this.tb_sppTableAdapter.Fill(this.dB_SPPDataSetSPP.tb_spp);
-
+            SqlConnection cn = conn.GetConn();
+            sda = new SqlDataAdapter("SELECT * FROM tb_spp", cn);
+            sda.Fill(dt);
+            dataGridView1.DataSource = dt;
         }
         private bool Validation()
         {

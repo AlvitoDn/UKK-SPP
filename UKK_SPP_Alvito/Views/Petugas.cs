@@ -25,8 +25,6 @@ namespace UKK_SPP_Alvito.Views
 
         private void Petugas_Load(object sender, EventArgs e)
         {
-            // TODO: This line of code loads data into the 'dB_SPPDataSetPetugas.tb_petugas' table. You can move, or remove it, as needed.
-            this.tb_petugasTableAdapter.Fill(this.dB_SPPDataSetPetugas.tb_petugas);
             SqlConnection cn = conn.GetConn();
             sda = new SqlDataAdapter("SELECT * FROM tb_petugas",cn);
             sda.Fill(dt);
@@ -156,6 +154,11 @@ namespace UKK_SPP_Alvito.Views
                 cn.Close();
                 MessageBox.Show("Data berhasil dihapus", "Berhasil", MessageBoxButtons.OK);
             }
+        }
+
+        private void label2_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

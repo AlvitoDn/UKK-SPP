@@ -8,7 +8,9 @@ namespace UKK_SPP_Alvito
 {
     public static class Session
     {
-        public static string UserID;
+        public static int UserID;
         public static string UserName;
+        public static string UserClass;
+        public static string NISN;
     }
 }

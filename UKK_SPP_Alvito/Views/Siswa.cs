@@ -24,28 +24,11 @@ namespace UKK_SPP_Alvito.Views
 
         private void Siswa_Load(object sender, EventArgs e)
         {
-            // TODO: This line of code loads data into the 'dB_SPPDataSetKelas.tb_kelas' table. You can move, or remove it, as needed.
-            this.tb_kelasTableAdapter.Fill(this.dB_SPPDataSetKelas.tb_kelas);
             SqlConnection cn = conn.GetConn();
             cn.Open();
-            // TODO: This line of code loads data into the 'dB_SPPDataSetSiswa.tb_siswa' table. You can move, or remove it, as needed.
-            this.tb_siswaTableAdapter.Fill(this.dB_SPPDataSetSiswa.tb_siswa);
-            SqlCommand cmd = new SqlCommand("select * from tb_kelas", cn);
-            SqlDataReader drd = cmd.ExecuteReader();
-            DataTable dt = new DataTable();
-            dt.Load(drd);
-
-            /*dr = dt.NewRow();
-            dr.ItemArray = new object[] { 0, "-Pilih Kelas-" };
-            dt.Rows.InsertAt(dr, 0);*/
-
-            comboBox1.DataSource = null;
-            comboBox1.Items.Clear();
-            comboBox1.DisplayMember = "nama_kelas";
-            comboBox1.SelectedValue = "id_kelas";
-            comboBox1.DataSource = dt;
-
-            cn.Close();
+            SqlDataAdapter sda = new SqlDataAdapter("select * from tb_siswa",cn);
+            sda.Fill(dt);
+            dataGridView1.DataSource= dt;
 
         }
         private bool Validation()
@@ -84,7 +67,7 @@ namespace UKK_SPP_Alvito.Views
         private void textBoxSearch_TextChanged(object sender, EventArgs e)
         {
             DataView dv = dt.DefaultView;
-            dv.RowFilter = String.Format("NISN like '%{0}%'", textBoxSearch.Text);
+            dv.RowFilter = String.Format("nama like '%{0}%'", textBoxSearch.Text);
             dataGridView1.DataSource = dv.ToTable();
         }
 

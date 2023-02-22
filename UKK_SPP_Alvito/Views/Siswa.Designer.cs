@@ -406,6 +406,7 @@
             this.textBox5.Name = "textBox5";
             this.textBox5.Size = new System.Drawing.Size(268, 26);
             this.textBox5.TabIndex = 37;
+            this.textBox5.UseSystemPasswordChar = true;
             // 
             // textBox7
             // 

@@ -140,6 +140,7 @@
             this.label2.Size = new System.Drawing.Size(60, 20);
             this.label2.TabIndex = 2;
             this.label2.Text = "Search :";
+            this.label2.Click += new System.EventHandler(this.label2_Click);
             // 
             // textBoxSearch
             // 
@@ -230,6 +231,7 @@
             this.textBox4.Name = "textBox4";
             this.textBox4.Size = new System.Drawing.Size(600, 26);
             this.textBox4.TabIndex = 11;
+            this.textBox4.UseSystemPasswordChar = true;
             this.textBox4.KeyDown += new System.Windows.Forms.KeyEventHandler(this.textBox5_KeyDown);
             // 
             // label6

@@ -38,6 +38,7 @@
             this.panel3 = new System.Windows.Forms.Panel();
             this.buttonCollapse = new System.Windows.Forms.Button();
             this.panelSide = new System.Windows.Forms.Panel();
+            this.buttonLaporan = new System.Windows.Forms.Button();
             this.buttonLogout = new System.Windows.Forms.Button();
             this.buttonHistory = new System.Windows.Forms.Button();
             this.buttonTrans = new System.Windows.Forms.Button();
@@ -47,7 +48,6 @@
             this.buttonPetugas = new System.Windows.Forms.Button();
             this.buttonHome = new System.Windows.Forms.Button();
             this.panelMain = new System.Windows.Forms.Panel();
-            this.buttonLaporan = new System.Windows.Forms.Button();
             this.panelNav.SuspendLayout();
             this.panel3.SuspendLayout();
             this.panelSide.SuspendLayout();
@@ -177,6 +177,24 @@
             this.panelSide.Name = "panelSide";
             this.panelSide.Size = new System.Drawing.Size(200, 745);
             this.panelSide.TabIndex = 1;
+            // 
+            // buttonLaporan
+            // 
+            this.buttonLaporan.Dock = System.Windows.Forms.DockStyle.Top;
+            this.buttonLaporan.FlatAppearance.BorderSize = 0;
+            this.buttonLaporan.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonLaporan.Font = new System.Drawing.Font("Arial Narrow", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonLaporan.ForeColor = System.Drawing.Color.White;
+            this.buttonLaporan.Image = ((System.Drawing.Image)(resources.GetObject("buttonLaporan.Image")));
+            this.buttonLaporan.Location = new System.Drawing.Point(0, 595);
+            this.buttonLaporan.Name = "buttonLaporan";
+            this.buttonLaporan.Size = new System.Drawing.Size(183, 85);
+            this.buttonLaporan.TabIndex = 11;
+            this.buttonLaporan.Tag = "HISTORY";
+            this.buttonLaporan.Text = "LAPORAN";
+            this.buttonLaporan.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.buttonLaporan.UseVisualStyleBackColor = true;
+            this.buttonLaporan.Click += new System.EventHandler(this.buttonLaporan_Click);
             // 
             // buttonLogout
             // 
@@ -329,23 +347,6 @@
             this.panelMain.Name = "panelMain";
             this.panelMain.Size = new System.Drawing.Size(1058, 745);
             this.panelMain.TabIndex = 2;
-            // 
-            // buttonLaporan
-            // 
-            this.buttonLaporan.Dock = System.Windows.Forms.DockStyle.Top;
-            this.buttonLaporan.FlatAppearance.BorderSize = 0;
-            this.buttonLaporan.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonLaporan.Font = new System.Drawing.Font("Arial Narrow", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.buttonLaporan.ForeColor = System.Drawing.Color.White;
-            this.buttonLaporan.Image = ((System.Drawing.Image)(resources.GetObject("buttonLaporan.Image")));
-            this.buttonLaporan.Location = new System.Drawing.Point(0, 595);
-            this.buttonLaporan.Name = "buttonLaporan";
-            this.buttonLaporan.Size = new System.Drawing.Size(183, 85);
-            this.buttonLaporan.TabIndex = 11;
-            this.buttonLaporan.Tag = "HISTORY";
-            this.buttonLaporan.Text = "LAPORAN";
-            this.buttonLaporan.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.buttonLaporan.UseVisualStyleBackColor = true;
             // 
             // Layout
             // 

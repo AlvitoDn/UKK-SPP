@@ -109,9 +109,9 @@ namespace UKK_SPP_Alvito.Views
         {
             loadForm(new Home());
             label1.Text = Session.UserName;
-            if (Session.UserID != string.Empty)
+            if (Session.UserClass != string.Empty)
             {
-                if (Session.UserID == "petugas")
+                if (Session.UserClass == "petugas")
                 {
                     buttonPetugas.Hide();
                     buttonSiswa.Hide();
@@ -119,7 +119,7 @@ namespace UKK_SPP_Alvito.Views
                     buttonSPP.Hide();
                     buttonLaporan.Hide();
                 }
-                else if (Session.UserID == "siswa")
+                else if (Session.UserClass == "siswa")
                 {
                     buttonPetugas.Hide();
                     buttonSiswa.Hide();
@@ -138,7 +138,7 @@ namespace UKK_SPP_Alvito.Views
         private void buttonLogout_Click(object sender, EventArgs e)
         {
             this.Hide();
-            Session.UserID = string.Empty;
+            Session.UserID = 0;
             Session.UserName = string.Empty;
             Login log = new Login();
             log.Show();
@@ -186,9 +186,14 @@ namespace UKK_SPP_Alvito.Views
 
         private void buttonHistory_Click(object sender, EventArgs e)
         {
-
+            loadForm(new History());
         }
 
+
+        private void buttonLaporan_Click(object sender, EventArgs e)
+        {
+            loadForm(new Laporan());
+        }
         private void panelNav_MouseDown(object sender, MouseEventArgs e)
         {
             ReleaseCapture();

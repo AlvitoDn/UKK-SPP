@@ -24,9 +24,10 @@ namespace UKK_SPP_Alvito.Views
 
         private void Kelas_Load(object sender, EventArgs e)
         {
-            // TODO: This line of code loads data into the 'dB_SPPDataSetKelas.tb_kelas' table. You can move, or remove it, as needed.
-            this.tb_kelasTableAdapter.Fill(this.dB_SPPDataSetKelas.tb_kelas);
-
+            SqlConnection cn = conn.GetConn();
+            SqlDataAdapter sda = new SqlDataAdapter("select * from tb_kelas",cn);
+            sda.Fill(dt);
+            dataGridView1.DataSource= dt;
         }
 
         private void textBoxSearch_TextChanged(object sender, EventArgs e)
@@ -34,18 +35,6 @@ namespace UKK_SPP_Alvito.Views
             DataView dv = dt.DefaultView;
             dv.RowFilter = String.Format("nama_kelas like '%{0}%'", textBoxSearch.Text);
             dataGridView1.DataSource = dv.ToTable();
-        }
-        private bool Validation()
-        {
-            foreach (TextBox txtbox in panelEdit.Controls.OfType<TextBox>())
-            {
-                if (txtbox.Text == string.Empty)
-                {
-                    MessageBox.Show("Tidak Boleh Ada Data Yang Kosong", "Gagal", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    return false;
-                }
-            }
-            return true;
         }
         public void refreshData()
         {
