@@ -32,20 +32,7 @@
             this.textBoxSearch = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.nisn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.nis = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.nama = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.usernameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.alamat = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.id_kelas = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.no_telp = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.tbsiswaBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.dB_SPPDataSetSiswa = new UKK_SPP_Alvito.DB_SPPDataSetSiswa();
-            this.tbpetugasBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.dB_SPPDataSetPetugas = new UKK_SPP_Alvito.DB_SPPDataSetPetugas();
             this.label1 = new System.Windows.Forms.Label();
-            this.tb_petugasTableAdapter = new UKK_SPP_Alvito.DB_SPPDataSetPetugasTableAdapters.tb_petugasTableAdapter();
-            this.tb_siswaTableAdapter = new UKK_SPP_Alvito.DB_SPPDataSetSiswaTableAdapters.tb_siswaTableAdapter();
             this.buttonDelete = new System.Windows.Forms.Button();
             this.buttonUpdate = new System.Windows.Forms.Button();
             this.buttonAdd = new System.Windows.Forms.Button();
@@ -55,28 +42,23 @@
             this.textBox2 = new System.Windows.Forms.TextBox();
             this.label13 = new System.Windows.Forms.Label();
             this.textBox3 = new System.Windows.Forms.TextBox();
-            this.label14 = new System.Windows.Forms.Label();
-            this.textBox4 = new System.Windows.Forms.TextBox();
             this.label15 = new System.Windows.Forms.Label();
-            this.textBox6 = new System.Windows.Forms.TextBox();
+            this.textBox5 = new System.Windows.Forms.TextBox();
             this.label16 = new System.Windows.Forms.Label();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.label17 = new System.Windows.Forms.Label();
             this.label18 = new System.Windows.Forms.Label();
-            this.textBox5 = new System.Windows.Forms.TextBox();
-            this.textBox7 = new System.Windows.Forms.TextBox();
+            this.textBox4 = new System.Windows.Forms.TextBox();
+            this.textBox6 = new System.Windows.Forms.TextBox();
             this.panelEdit = new System.Windows.Forms.Panel();
-            this.dB_SPPDataSetKelas = new UKK_SPP_Alvito.DB_SPPDataSetKelas();
+            this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.tbkelasBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.dB_SPPDataSetKelas = new UKK_SPP_Alvito.DB_SPPDataSetKelas();
             this.tb_kelasTableAdapter = new UKK_SPP_Alvito.DB_SPPDataSetKelasTableAdapters.tb_kelasTableAdapter();
+            this.button1 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.tbsiswaBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dB_SPPDataSetSiswa)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.tbpetugasBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dB_SPPDataSetPetugas)).BeginInit();
             this.panelEdit.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dB_SPPDataSetKelas)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.tbkelasBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dB_SPPDataSetKelas)).BeginInit();
             this.SuspendLayout();
             // 
             // textBoxSearch
@@ -100,7 +82,6 @@
             this.label2.Size = new System.Drawing.Size(60, 20);
             this.label2.TabIndex = 20;
             this.label2.Text = "Search :";
-            this.label2.Click += new System.EventHandler(this.label2_Click);
             // 
             // dataGridView1
             // 
@@ -109,84 +90,13 @@
             this.dataGridView1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.dataGridView1.AutoGenerateColumns = false;
             this.dataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.nisn,
-            this.nis,
-            this.nama,
-            this.usernameDataGridViewTextBoxColumn,
-            this.alamat,
-            this.id_kelas,
-            this.no_telp});
-            this.dataGridView1.DataSource = this.tbsiswaBindingSource;
             this.dataGridView1.Location = new System.Drawing.Point(12, 44);
             this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.ReadOnly = true;
             this.dataGridView1.Size = new System.Drawing.Size(1013, 281);
             this.dataGridView1.TabIndex = 19;
-            // 
-            // nisn
-            // 
-            this.nisn.DataPropertyName = "nisn";
-            this.nisn.HeaderText = "nisn";
-            this.nisn.Name = "nisn";
-            // 
-            // nis
-            // 
-            this.nis.DataPropertyName = "nis";
-            this.nis.HeaderText = "nis";
-            this.nis.Name = "nis";
-            // 
-            // nama
-            // 
-            this.nama.DataPropertyName = "nama";
-            this.nama.HeaderText = "nama";
-            this.nama.Name = "nama";
-            // 
-            // usernameDataGridViewTextBoxColumn
-            // 
-            this.usernameDataGridViewTextBoxColumn.DataPropertyName = "username";
-            this.usernameDataGridViewTextBoxColumn.HeaderText = "username";
-            this.usernameDataGridViewTextBoxColumn.Name = "usernameDataGridViewTextBoxColumn";
-            // 
-            // alamat
-            // 
-            this.alamat.DataPropertyName = "alamat";
-            this.alamat.HeaderText = "alamat";
-            this.alamat.Name = "alamat";
-            // 
-            // id_kelas
-            // 
-            this.id_kelas.DataPropertyName = "id_kelas";
-            this.id_kelas.HeaderText = "id_kelas";
-            this.id_kelas.Name = "id_kelas";
-            // 
-            // no_telp
-            // 
-            this.no_telp.DataPropertyName = "no_telp";
-            this.no_telp.HeaderText = "no_telp";
-            this.no_telp.Name = "no_telp";
-            // 
-            // tbsiswaBindingSource
-            // 
-            this.tbsiswaBindingSource.DataMember = "tb_siswa";
-            this.tbsiswaBindingSource.DataSource = this.dB_SPPDataSetSiswa;
-            // 
-            // dB_SPPDataSetSiswa
-            // 
-            this.dB_SPPDataSetSiswa.DataSetName = "DB_SPPDataSetSiswa";
-            this.dB_SPPDataSetSiswa.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
-            // tbpetugasBindingSource
-            // 
-            this.tbpetugasBindingSource.DataMember = "tb_petugas";
-            this.tbpetugasBindingSource.DataSource = this.dB_SPPDataSetPetugas;
-            // 
-            // dB_SPPDataSetPetugas
-            // 
-            this.dB_SPPDataSetPetugas.DataSetName = "DB_SPPDataSetPetugas";
-            this.dB_SPPDataSetPetugas.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
             // label1
             // 
@@ -198,19 +108,11 @@
             this.label1.TabIndex = 18;
             this.label1.Text = "List Siswa";
             // 
-            // tb_petugasTableAdapter
-            // 
-            this.tb_petugasTableAdapter.ClearBeforeFill = true;
-            // 
-            // tb_siswaTableAdapter
-            // 
-            this.tb_siswaTableAdapter.ClearBeforeFill = true;
-            // 
             // buttonDelete
             // 
             this.buttonDelete.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.buttonDelete.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.buttonDelete.Location = new System.Drawing.Point(927, 58);
+            this.buttonDelete.Location = new System.Drawing.Point(927, 64);
             this.buttonDelete.Name = "buttonDelete";
             this.buttonDelete.Size = new System.Drawing.Size(98, 58);
             this.buttonDelete.TabIndex = 32;
@@ -222,7 +124,7 @@
             // 
             this.buttonUpdate.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.buttonUpdate.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.buttonUpdate.Location = new System.Drawing.Point(823, 58);
+            this.buttonUpdate.Location = new System.Drawing.Point(823, 64);
             this.buttonUpdate.Name = "buttonUpdate";
             this.buttonUpdate.Size = new System.Drawing.Size(98, 58);
             this.buttonUpdate.TabIndex = 33;
@@ -234,7 +136,7 @@
             // 
             this.buttonAdd.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.buttonAdd.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.buttonAdd.Location = new System.Drawing.Point(823, 122);
+            this.buttonAdd.Location = new System.Drawing.Point(823, 124);
             this.buttonAdd.Name = "buttonAdd";
             this.buttonAdd.Size = new System.Drawing.Size(202, 58);
             this.buttonAdd.TabIndex = 34;
@@ -252,6 +154,8 @@
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(268, 26);
             this.textBox1.TabIndex = 23;
+            this.textBox1.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
+            this.textBox1.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBox1_KeyPress);
             // 
             // label10
             // 
@@ -285,6 +189,7 @@
             this.textBox2.Name = "textBox2";
             this.textBox2.Size = new System.Drawing.Size(268, 26);
             this.textBox2.TabIndex = 25;
+            this.textBox2.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBox2_KeyPress);
             // 
             // label13
             // 
@@ -308,28 +213,6 @@
             this.textBox3.Size = new System.Drawing.Size(268, 26);
             this.textBox3.TabIndex = 27;
             // 
-            // label14
-            // 
-            this.label14.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.label14.AutoSize = true;
-            this.label14.Font = new System.Drawing.Font("Arial Narrow", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label14.Location = new System.Drawing.Point(13, 122);
-            this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(79, 20);
-            this.label14.TabIndex = 28;
-            this.label14.Text = "Username :";
-            // 
-            // textBox4
-            // 
-            this.textBox4.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBox4.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.textBox4.Font = new System.Drawing.Font("Arial Narrow", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox4.Location = new System.Drawing.Point(103, 120);
-            this.textBox4.Name = "textBox4";
-            this.textBox4.Size = new System.Drawing.Size(268, 26);
-            this.textBox4.TabIndex = 29;
-            // 
             // label15
             // 
             this.label15.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
@@ -341,45 +224,34 @@
             this.label15.TabIndex = 36;
             this.label15.Text = "Alamat :";
             // 
-            // textBox6
+            // textBox5
             // 
-            this.textBox6.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBox6.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.textBox6.Font = new System.Drawing.Font("Arial Narrow", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox6.Location = new System.Drawing.Point(462, 24);
-            this.textBox6.Multiline = true;
-            this.textBox6.Name = "textBox6";
-            this.textBox6.Size = new System.Drawing.Size(342, 84);
-            this.textBox6.TabIndex = 37;
+            this.textBox5.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.textBox5.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.textBox5.Font = new System.Drawing.Font("Arial Narrow", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBox5.Location = new System.Drawing.Point(462, 24);
+            this.textBox5.Multiline = true;
+            this.textBox5.Name = "textBox5";
+            this.textBox5.Size = new System.Drawing.Size(342, 84);
+            this.textBox5.TabIndex = 37;
             // 
             // label16
             // 
-            this.label16.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.label16.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.label16.AutoSize = true;
             this.label16.Font = new System.Drawing.Font("Arial Narrow", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label16.Location = new System.Drawing.Point(375, 154);
+            this.label16.Location = new System.Drawing.Point(16, 157);
             this.label16.Name = "label16";
             this.label16.Size = new System.Drawing.Size(51, 20);
             this.label16.TabIndex = 30;
             this.label16.Text = "Kelas :";
-            // 
-            // comboBox1
-            // 
-            this.comboBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.comboBox1.Font = new System.Drawing.Font("Arial Narrow", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(462, 151);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(342, 28);
-            this.comboBox1.TabIndex = 31;
-            this.comboBox1.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
             // 
             // label17
             // 
             this.label17.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.label17.AutoSize = true;
             this.label17.Font = new System.Drawing.Font("Arial Narrow", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label17.Location = new System.Drawing.Point(13, 153);
+            this.label17.Location = new System.Drawing.Point(13, 124);
             this.label17.Name = "label17";
             this.label17.Size = new System.Drawing.Size(77, 20);
             this.label17.TabIndex = 36;
@@ -396,44 +268,44 @@
             this.label18.TabIndex = 42;
             this.label18.Text = "No Telp :";
             // 
-            // textBox5
+            // textBox4
             // 
-            this.textBox5.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            this.textBox4.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBox5.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.textBox5.Font = new System.Drawing.Font("Arial Narrow", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox5.Location = new System.Drawing.Point(103, 151);
-            this.textBox5.Name = "textBox5";
-            this.textBox5.Size = new System.Drawing.Size(268, 26);
-            this.textBox5.TabIndex = 37;
-            this.textBox5.UseSystemPasswordChar = true;
+            this.textBox4.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.textBox4.Font = new System.Drawing.Font("Arial Narrow", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBox4.Location = new System.Drawing.Point(103, 122);
+            this.textBox4.Name = "textBox4";
+            this.textBox4.Size = new System.Drawing.Size(268, 26);
+            this.textBox4.TabIndex = 37;
+            this.textBox4.UseSystemPasswordChar = true;
             // 
-            // textBox7
+            // textBox6
             // 
-            this.textBox7.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBox7.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.textBox7.Font = new System.Drawing.Font("Arial Narrow", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox7.Location = new System.Drawing.Point(462, 119);
-            this.textBox7.Name = "textBox7";
-            this.textBox7.Size = new System.Drawing.Size(342, 26);
-            this.textBox7.TabIndex = 43;
+            this.textBox6.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.textBox6.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.textBox6.Font = new System.Drawing.Font("Arial Narrow", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBox6.Location = new System.Drawing.Point(462, 119);
+            this.textBox6.Name = "textBox6";
+            this.textBox6.Size = new System.Drawing.Size(342, 26);
+            this.textBox6.TabIndex = 43;
+            this.textBox6.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBox6_KeyPress);
             // 
             // panelEdit
             // 
-            this.panelEdit.Controls.Add(this.textBox6);
-            this.panelEdit.Controls.Add(this.textBox7);
-            this.panelEdit.Controls.Add(this.buttonDelete);
-            this.panelEdit.Controls.Add(this.textBox4);
-            this.panelEdit.Controls.Add(this.buttonUpdate);
+            this.panelEdit.Controls.Add(this.button1);
+            this.panelEdit.Controls.Add(this.comboBox1);
             this.panelEdit.Controls.Add(this.textBox5);
+            this.panelEdit.Controls.Add(this.textBox6);
+            this.panelEdit.Controls.Add(this.buttonDelete);
+            this.panelEdit.Controls.Add(this.buttonUpdate);
+            this.panelEdit.Controls.Add(this.textBox4);
             this.panelEdit.Controls.Add(this.buttonAdd);
             this.panelEdit.Controls.Add(this.label18);
             this.panelEdit.Controls.Add(this.textBox1);
-            this.panelEdit.Controls.Add(this.label14);
             this.panelEdit.Controls.Add(this.label10);
             this.panelEdit.Controls.Add(this.label17);
             this.panelEdit.Controls.Add(this.label11);
-            this.panelEdit.Controls.Add(this.comboBox1);
             this.panelEdit.Controls.Add(this.textBox2);
             this.panelEdit.Controls.Add(this.textBox3);
             this.panelEdit.Controls.Add(this.label13);
@@ -445,19 +317,45 @@
             this.panelEdit.Size = new System.Drawing.Size(1037, 192);
             this.panelEdit.TabIndex = 44;
             // 
-            // dB_SPPDataSetKelas
+            // comboBox1
             // 
-            this.dB_SPPDataSetKelas.DataSetName = "DB_SPPDataSetKelas";
-            this.dB_SPPDataSetKelas.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            this.comboBox1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.comboBox1.DataSource = this.tbkelasBindingSource;
+            this.comboBox1.DisplayMember = "nama_kelas";
+            this.comboBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.comboBox1.FormattingEnabled = true;
+            this.comboBox1.Location = new System.Drawing.Point(103, 154);
+            this.comboBox1.Name = "comboBox1";
+            this.comboBox1.Size = new System.Drawing.Size(268, 28);
+            this.comboBox1.TabIndex = 44;
+            this.comboBox1.ValueMember = "id_kelas";
             // 
             // tbkelasBindingSource
             // 
             this.tbkelasBindingSource.DataMember = "tb_kelas";
             this.tbkelasBindingSource.DataSource = this.dB_SPPDataSetKelas;
             // 
+            // dB_SPPDataSetKelas
+            // 
+            this.dB_SPPDataSetKelas.DataSetName = "DB_SPPDataSetKelas";
+            this.dB_SPPDataSetKelas.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
             // tb_kelasTableAdapter
             // 
             this.tb_kelasTableAdapter.ClearBeforeFill = true;
+            // 
+            // button1
+            // 
+            this.button1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button1.Location = new System.Drawing.Point(823, 24);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(202, 34);
+            this.button1.TabIndex = 45;
+            this.button1.Text = "Reset";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // Siswa
             // 
@@ -474,14 +372,10 @@
             this.Text = "Siswa";
             this.Load += new System.EventHandler(this.Siswa_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.tbsiswaBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dB_SPPDataSetSiswa)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.tbpetugasBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dB_SPPDataSetPetugas)).EndInit();
             this.panelEdit.ResumeLayout(false);
             this.panelEdit.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dB_SPPDataSetKelas)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.tbkelasBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dB_SPPDataSetKelas)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -491,13 +385,7 @@
         private System.Windows.Forms.TextBox textBoxSearch;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.DataGridView dataGridView1;
-        private System.Windows.Forms.BindingSource tbpetugasBindingSource;
-        private DB_SPPDataSetPetugas dB_SPPDataSetPetugas;
         private System.Windows.Forms.Label label1;
-        private DB_SPPDataSetPetugasTableAdapters.tb_petugasTableAdapter tb_petugasTableAdapter;
-        private DB_SPPDataSetSiswa dB_SPPDataSetSiswa;
-        private System.Windows.Forms.BindingSource tbsiswaBindingSource;
-        private DB_SPPDataSetSiswaTableAdapters.tb_siswaTableAdapter tb_siswaTableAdapter;
         private System.Windows.Forms.Button buttonDelete;
         private System.Windows.Forms.Button buttonUpdate;
         private System.Windows.Forms.Button buttonAdd;
@@ -507,26 +395,18 @@
         private System.Windows.Forms.TextBox textBox2;
         private System.Windows.Forms.Label label13;
         private System.Windows.Forms.TextBox textBox3;
-        private System.Windows.Forms.Label label14;
-        private System.Windows.Forms.TextBox textBox4;
         private System.Windows.Forms.Label label15;
-        private System.Windows.Forms.TextBox textBox6;
+        private System.Windows.Forms.TextBox textBox5;
         private System.Windows.Forms.Label label16;
-        private System.Windows.Forms.ComboBox comboBox1;
         private System.Windows.Forms.Label label17;
         private System.Windows.Forms.Label label18;
-        private System.Windows.Forms.TextBox textBox5;
-        private System.Windows.Forms.TextBox textBox7;
+        private System.Windows.Forms.TextBox textBox4;
+        private System.Windows.Forms.TextBox textBox6;
         private System.Windows.Forms.Panel panelEdit;
-        private System.Windows.Forms.DataGridViewTextBoxColumn nisn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn nis;
-        private System.Windows.Forms.DataGridViewTextBoxColumn nama;
-        private System.Windows.Forms.DataGridViewTextBoxColumn usernameDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn alamat;
-        private System.Windows.Forms.DataGridViewTextBoxColumn id_kelas;
-        private System.Windows.Forms.DataGridViewTextBoxColumn no_telp;
+        private System.Windows.Forms.ComboBox comboBox1;
         private DB_SPPDataSetKelas dB_SPPDataSetKelas;
         private System.Windows.Forms.BindingSource tbkelasBindingSource;
         private DB_SPPDataSetKelasTableAdapters.tb_kelasTableAdapter tb_kelasTableAdapter;
+        private System.Windows.Forms.Button button1;
     }
 }

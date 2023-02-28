@@ -55,6 +55,7 @@
             this.textBoxSearch = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.tb_sppTableAdapter = new UKK_SPP_Alvito.DB_SPPDataSetSPPTableAdapters.tb_sppTableAdapter();
+            this.button1 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.tbkelasBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dB_SPPDataSetKelas)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.tbpetugasBindingSource)).BeginInit();
@@ -71,10 +72,11 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.textBox3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.textBox3.Font = new System.Drawing.Font("Arial Narrow", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox3.Location = new System.Drawing.Point(102, 110);
+            this.textBox3.Location = new System.Drawing.Point(102, 38);
             this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(390, 26);
+            this.textBox3.Size = new System.Drawing.Size(378, 26);
             this.textBox3.TabIndex = 17;
+            this.textBox3.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBox3_KeyPress);
             // 
             // tb_kelasTableAdapter
             // 
@@ -127,7 +129,7 @@
             this.dataGridView1.DataSource = this.tbsppBindingSource;
             this.dataGridView1.Location = new System.Drawing.Point(12, 40);
             this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(688, 309);
+            this.dataGridView1.Size = new System.Drawing.Size(688, 290);
             this.dataGridView1.TabIndex = 24;
             // 
             // idsppDataGridViewTextBoxColumn
@@ -167,7 +169,7 @@
             // 
             this.buttonAdd.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.buttonAdd.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.buttonAdd.Location = new System.Drawing.Point(498, 78);
+            this.buttonAdd.Location = new System.Drawing.Point(498, 452);
             this.buttonAdd.Name = "buttonAdd";
             this.buttonAdd.Size = new System.Drawing.Size(202, 58);
             this.buttonAdd.TabIndex = 16;
@@ -180,7 +182,7 @@
             this.label3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Arial Narrow", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(12, 46);
+            this.label3.Location = new System.Drawing.Point(12, 389);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(61, 20);
             this.label3.TabIndex = 4;
@@ -190,7 +192,7 @@
             // 
             this.buttonUpdate.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.buttonUpdate.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.buttonUpdate.Location = new System.Drawing.Point(498, 11);
+            this.buttonUpdate.Location = new System.Drawing.Point(498, 385);
             this.buttonUpdate.Name = "buttonUpdate";
             this.buttonUpdate.Size = new System.Drawing.Size(98, 58);
             this.buttonUpdate.TabIndex = 15;
@@ -203,16 +205,18 @@
             this.textBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.textBox1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.textBox1.Font = new System.Drawing.Font("Arial Narrow", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox1.Location = new System.Drawing.Point(102, 43);
+            this.textBox1.Location = new System.Drawing.Point(102, 386);
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(78, 26);
             this.textBox1.TabIndex = 5;
+            this.textBox1.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
+            this.textBox1.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBox1_KeyPress);
             // 
             // buttonDelete
             // 
             this.buttonDelete.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.buttonDelete.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.buttonDelete.Location = new System.Drawing.Point(602, 11);
+            this.buttonDelete.Location = new System.Drawing.Point(602, 385);
             this.buttonDelete.Name = "buttonDelete";
             this.buttonDelete.Size = new System.Drawing.Size(98, 58);
             this.buttonDelete.TabIndex = 14;
@@ -225,7 +229,7 @@
             this.label4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Arial Narrow", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(12, 77);
+            this.label4.Location = new System.Drawing.Point(12, 5);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(56, 20);
             this.label4.TabIndex = 6;
@@ -237,17 +241,18 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.textBox2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.textBox2.Font = new System.Drawing.Font("Arial Narrow", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox2.Location = new System.Drawing.Point(102, 75);
+            this.textBox2.Location = new System.Drawing.Point(102, 3);
             this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(390, 26);
+            this.textBox2.Size = new System.Drawing.Size(378, 26);
             this.textBox2.TabIndex = 7;
+            this.textBox2.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBox2_KeyPress);
             // 
             // label7
             // 
             this.label7.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("Arial Narrow", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.Location = new System.Drawing.Point(12, 110);
+            this.label7.Location = new System.Drawing.Point(12, 38);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(69, 20);
             this.label7.TabIndex = 12;
@@ -255,19 +260,14 @@
             // 
             // panelEdit
             // 
-            this.panelEdit.Controls.Add(this.label3);
+            this.panelEdit.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.panelEdit.Controls.Add(this.textBox3);
-            this.panelEdit.Controls.Add(this.textBox1);
-            this.panelEdit.Controls.Add(this.buttonAdd);
-            this.panelEdit.Controls.Add(this.buttonUpdate);
-            this.panelEdit.Controls.Add(this.buttonDelete);
             this.panelEdit.Controls.Add(this.label4);
             this.panelEdit.Controls.Add(this.textBox2);
             this.panelEdit.Controls.Add(this.label7);
-            this.panelEdit.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panelEdit.Location = new System.Drawing.Point(0, 371);
+            this.panelEdit.Location = new System.Drawing.Point(0, 417);
             this.panelEdit.Name = "panelEdit";
-            this.panelEdit.Size = new System.Drawing.Size(712, 151);
+            this.panelEdit.Size = new System.Drawing.Size(483, 105);
             this.panelEdit.TabIndex = 27;
             // 
             // textBoxSearch
@@ -296,15 +296,33 @@
             // 
             this.tb_sppTableAdapter.ClearBeforeFill = true;
             // 
+            // button1
+            // 
+            this.button1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button1.Location = new System.Drawing.Point(498, 345);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(202, 34);
+            this.button1.TabIndex = 47;
+            this.button1.Text = "Reset";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
             // DataSPP
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(712, 522);
+            this.Controls.Add(this.button1);
+            this.Controls.Add(this.label3);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.dataGridView1);
+            this.Controls.Add(this.textBox1);
             this.Controls.Add(this.panelEdit);
+            this.Controls.Add(this.buttonAdd);
             this.Controls.Add(this.textBoxSearch);
+            this.Controls.Add(this.buttonUpdate);
+            this.Controls.Add(this.buttonDelete);
             this.Controls.Add(this.label2);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "DataSPP";
@@ -352,5 +370,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn idsppDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn tahunDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn nominalDataGridViewTextBoxColumn;
+        private System.Windows.Forms.Button button1;
     }
 }

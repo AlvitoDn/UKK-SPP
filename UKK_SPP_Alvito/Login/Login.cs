@@ -40,9 +40,9 @@ namespace UKK_SPP_Alvito
             else
             {
                 SqlCommand cmd = new SqlCommand("select * from tb_petugas where username = @username", conn);
-                SqlCommand com = new SqlCommand("select * from tb_siswa where username = @username", conn);
+                SqlCommand com = new SqlCommand("select * from tb_siswa where nisn = @nisn", conn);
                 cmd.Parameters.AddWithValue("@username", textBox1.Text);
-                com.Parameters.AddWithValue("@username", textBox1.Text);
+                com.Parameters.AddWithValue("@nisn", textBox1.Text);
                 SqlDataReader rdr = cmd.ExecuteReader();
                 SqlDataReader rdar = com.ExecuteReader();
                 if (rdr.HasRows)
@@ -79,7 +79,7 @@ namespace UKK_SPP_Alvito
                     }
                 }else if (rdar.HasRows)
                 {
-                    SqlDataAdapter sda = new SqlDataAdapter("Select * from tb_siswa where username = '" + textBox1.Text + "' and password = '" + textBox2.Text + "'", conn);
+                    SqlDataAdapter sda = new SqlDataAdapter("Select * from tb_siswa where nisn = '" + textBox1.Text + "' and password = '" + textBox2.Text + "'", conn);
                     DataTable dt = new DataTable();
                     sda.Fill(dt);
                     if (dt.Rows.Count > 0)

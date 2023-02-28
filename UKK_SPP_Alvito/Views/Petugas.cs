@@ -32,7 +32,7 @@ namespace UKK_SPP_Alvito.Views
         }
 
         private void textBox2_KeyDown(object sender, KeyEventArgs e)
-        {
+        {          
             if (e.KeyCode == Keys.Enter)
             {
                 this.textBox2.Focus();
@@ -106,23 +106,35 @@ namespace UKK_SPP_Alvito.Views
             SqlConnection cn = conn.GetConn();
             if (Validation())
             {
-                SqlCommand cmd = new SqlCommand("Insert into [tb_petugas] (nama_petugas,username,password,level) values ('" + textBox2.Text + "','" + textBox3.Text + "','" + textBox4.Text + "','" + comboBox1.Text + "')", cn);
-                cmd.CommandType = CommandType.Text;
                 cn.Open();
-                cmd.ExecuteNonQuery();
-                MessageBox.Show("Tambah Data Berhasil", "berhasil", MessageBoxButtons.OK);
-                refreshData();
-                cn.Close();
-
+                SqlCommand cmd = new SqlCommand("select * from tb_petugas where username = @username", cn);
+                cmd.Parameters.AddWithValue("@username", textBox3.Text);
+                SqlDataReader rdr = cmd.ExecuteReader();
+                if (rdr.HasRows)
+                {
+                    MessageBox.Show("Username Sudah Dipakai Oleh Pengguna Lain, Harap Masukan Username Yang Berbeda !","Gagal",MessageBoxButtons.OK,MessageBoxIcon.Error);
+                }
+                else
+                {
+                    SqlCommand command = new SqlCommand("Insert into [tb_petugas] (nama_petugas,username,password,level) values ('" + textBox2.Text + "','" + textBox3.Text + "','" + textBox4.Text + "','" + comboBox1.Text + "')", cn);
+                    command.CommandType = CommandType.Text;
+                    command.ExecuteNonQuery();
+                    MessageBox.Show("Tambah Data Berhasil", "berhasil", MessageBoxButtons.OK);
+                    refreshData();
+                    cn.Close();
+                }
             }
         }
 
         private void buttonUpdate_Click(object sender, EventArgs e)
         {
             SqlConnection cn = conn.GetConn();
-            if (textBox1.Text == string.Empty)
+            cn.Open();
+            SqlCommand com = new SqlCommand("select id_petugas from tb_petugas where id_petugas = '" + textBox1.Text + "'", cn);
+            SqlDataReader dr = com.ExecuteReader();
+            if (textBox1.Text == string.Empty || !dr.HasRows)
             {
-                MessageBox.Show("Update Gagal! Mohon Masukan ID Petugas Yang Ingin Anda Update", "Gagal", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Update Gagal! Mohon Masukan ID Petugas Yang Ingin Anda Update Dengan Benar", "Gagal", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             else
             {
@@ -138,27 +150,70 @@ namespace UKK_SPP_Alvito.Views
 
         private void buttonDelete_Click(object sender, EventArgs e)
         {
-            if (textBox1.Text == string.Empty)
+            SqlConnection cn = conn.GetConn();
+            cn.Open();
+            SqlCommand com = new SqlCommand("select id_petugas from tb_petugas where id_petugas = '" + textBox1.Text + "'", cn);
+            SqlDataReader dr = com.ExecuteReader();
+            if (!dr.HasRows || textBox1.Text == "")
             {
-                MessageBox.Show("Mohon Masukan Nama Yang Ingin Dihapus", "gagal", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Data Salah Atau Tidak Ada !!", "Gagal", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             else
             {
-                SqlConnection cn = conn.GetConn();
-                cn.Open();
                 SqlCommand cmd = cn.CreateCommand();
                 cmd.CommandType = CommandType.Text;
                 cmd.CommandText = "delete from tb_petugas where id_petugas = '" + textBox1.Text + "'";
                 cmd.ExecuteNonQuery();
                 refreshData();
-                cn.Close();
                 MessageBox.Show("Data berhasil dihapus", "Berhasil", MessageBoxButtons.OK);
+                cn.Close();
             }
         }
 
-        private void label2_Click(object sender, EventArgs e)
+        private void textBox1_KeyPress(object sender, KeyPressEventArgs e)
         {
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) && (e.KeyChar != '.'))
+            {
+                e.Handled = true;
+            }
 
+            if ((e.KeyChar == '.') && ((sender as TextBox).Text.IndexOf('.') > -1))
+            {
+                e.Handled = true;
+
+            }
+        }
+
+        private void textBox1_TextChanged(object sender, EventArgs e)
+        {
+            SqlConnection cn = conn.GetConn();
+            cn.Open();
+            SqlCommand cmd = new SqlCommand("select * from tb_petugas where id_petugas = '" + textBox1.Text + "'", cn);
+            cmd.ExecuteNonQuery();
+            SqlDataReader dr = cmd.ExecuteReader();
+            if (dr.HasRows)
+            {
+                while (dr.Read())
+                {
+                    textBox2.Text = (string)dr["nama_petugas"].ToString();
+                    textBox3.Text = (string)dr["username"].ToString();
+                    textBox4.Text = (string)dr["password"].ToString();
+                    comboBox1.Text = (string)dr["level"].ToString();
+                }
+            }
+            else
+            {
+                textBox2.Text = "";
+                textBox3.Text = "";
+                textBox4.Text = "";
+                comboBox1.Text = "";
+            }
+            cn.Close();
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            refreshData();
         }
     }
 }

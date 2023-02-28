@@ -5,6 +5,7 @@ using System.Data;
 using System.Data.SqlClient;
 using System.Drawing;
 using System.Linq;
+using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -17,6 +18,7 @@ namespace UKK_SPP_Alvito.Views
     {
         Koneksi conn = new Koneksi();
         DataTable dt = new DataTable();
+        SqlDataAdapter sda;
         public Siswa()
         {
             InitializeComponent();
@@ -24,11 +26,13 @@ namespace UKK_SPP_Alvito.Views
 
         private void Siswa_Load(object sender, EventArgs e)
         {
+            // TODO: This line of code loads data into the 'dB_SPPDataSetKelas.tb_kelas' table. You can move, or remove it, as needed.
+            this.tb_kelasTableAdapter.Fill(this.dB_SPPDataSetKelas.tb_kelas);
             SqlConnection cn = conn.GetConn();
             cn.Open();
-            SqlDataAdapter sda = new SqlDataAdapter("select * from tb_siswa",cn);
+            SqlDataAdapter sda = new SqlDataAdapter("select nisn,nis,nama,id_kelas,alamat,no_telp,password from tb_siswa",cn);
             sda.Fill(dt);
-            dataGridView1.DataSource= dt;
+            dataGridView1.DataSource = dt;
 
         }
         private bool Validation()
@@ -49,17 +53,17 @@ namespace UKK_SPP_Alvito.Views
             cn.Open();
             SqlCommand cmd = cn.CreateCommand();
             cmd.CommandType = CommandType.Text;
-            cmd.CommandText = "select * from tb_siswa";
+            cmd.CommandText = "select nisn,nis,nama,id_kelas,alamat,no_telp,password from tb_siswa";
             DataTable dt = new DataTable();
             SqlDataAdapter sda = new SqlDataAdapter(cmd);
             sda.Fill(dt);
             dataGridView1.DataSource = dt;
+            textBox1.Text = "";
             textBox2.Text = "";
             textBox3.Text = "";
             textBox4.Text = "";
             textBox5.Text = "";
             textBox6.Text = "";
-            textBox7.Text = "";
             comboBox1.Text = "";
             cn.Close();
         }
@@ -74,9 +78,12 @@ namespace UKK_SPP_Alvito.Views
         private void buttonAdd_Click(object sender, EventArgs e)
         {
             SqlConnection cn = conn.GetConn();
-            if (Validation())
+            cn.Open();
+            SqlCommand com = new SqlCommand("select nisn from tb_siswa where nisn = '" + textBox1.Text + "'", cn);
+            SqlDataReader dr = com.ExecuteReader();
+            if (Validation() && !dr.HasRows)
             {
-                SqlCommand cmd = new SqlCommand("Insert into [tb_siswa] (nisn,nis,nama,username,password,alamat,id_kelas,no_telp) values ('" + textBox1.Text + "','" + textBox2.Text + "','" + textBox3.Text + "','" + textBox4.Text + "','" + textBox5.Text + "','" + textBox6.Text + "','" + comboBox1.SelectedValue + "','"+textBox7.Text+"')", cn);
+                SqlCommand cmd = new SqlCommand("Insert into [tb_siswa] (nisn,nis,nama,password,alamat,id_kelas,no_telp) values ('" + textBox1.Text + "','" + textBox2.Text + "','" + textBox3.Text + "','" + textBox4.Text + "','" + textBox5.Text + "','" + comboBox1.SelectedValue + "','"+textBox6.Text+"')", cn);
                 cmd.CommandType = CommandType.Text;
                 cn.Open();
                 cmd.ExecuteNonQuery();
@@ -84,58 +91,130 @@ namespace UKK_SPP_Alvito.Views
                 refreshData();
                 cn.Close();
             }
+            else
+            {
+                MessageBox.Show("NISN Sudah Terdaftar","Gagal",MessageBoxButtons.OK,MessageBoxIcon.Error);
+                refreshData();
+            }
         }
 
         private void buttonUpdate_Click(object sender, EventArgs e)
         {
             SqlConnection cn = conn.GetConn();
-            foreach (TextBox txtbox in panelEdit.Controls.OfType<TextBox>())
+            cn.Open();
+            SqlCommand com = new SqlCommand("select nisn from tb_siswa where nisn = '" + textBox1.Text + "'", cn);
+            SqlDataReader dr = com.ExecuteReader();
+            if(!Validation() || !dr.HasRows)
             {
-                if(txtbox.Text == string.Empty)
-                {
-                    MessageBox.Show("Tidak Boleh Ada Yang Kosong! Mohon Masukan Ulang Semua Data!","Gagal",MessageBoxButtons.OK,MessageBoxIcon.Error);
-                }
-                else
-                {
-                SqlCommand cmd = new SqlCommand("Update [tb_siswa] Set nisn = '" + textBox1.Text + "', nis = '" + textBox2.Text + "', nama = '"+textBox3.Text+"', username = '"+textBox4.Text+"', password = '" + textBox5.Text + "', alamat = '" + textBox6.Text + "', no_telp = '" + textBox7.Text + "', id_kelas = '" + comboBox1.SelectedValue + "' where nisn = '" + textBox1.Text + "'", cn);
-                cmd.CommandType = CommandType.Text;
-                cn.Open();
-                cmd.ExecuteNonQuery();
-                MessageBox.Show("Update Data Berhasil", "berhasil", MessageBoxButtons.OK);
-                refreshData();
-                cn.Close();
-                }
+                MessageBox.Show("Tidak Boleh Ada Yang Kosong! Pastikan Semua Data Terisi Dengan Benar!","Gagal",MessageBoxButtons.OK,MessageBoxIcon.Error);
             }
+            else
+            {
+            SqlCommand cmd = new SqlCommand("Update [tb_siswa] Set nisn = '" + textBox1.Text + "', nis = '" + textBox2.Text + "', nama = '"+textBox3.Text+"', password = '" + textBox4.Text + "', alamat = '" + textBox5.Text + "', no_telp = '" + textBox6.Text + "', id_kelas = '" + comboBox1.SelectedValue + "' where nisn = '" + textBox1.Text + "'", cn);
+            cmd.CommandType = CommandType.Text;
+            cmd.ExecuteNonQuery();
+            MessageBox.Show("Update Data Berhasil", "berhasil", MessageBoxButtons.OK);
+            refreshData();
+            }
+            cn.Close();
         }
 
         private void buttonDelete_Click(object sender, EventArgs e)
         {
-            if (textBox2.Text == string.Empty)
+            SqlConnection cn = conn.GetConn();
+            cn.Open();
+            SqlCommand com = new SqlCommand("select nisn from tb_siswa where nisn = '" + textBox1.Text + "'", cn);
+            SqlDataReader dr = com.ExecuteReader();
+            if (!dr.HasRows || textBox1.Text == "")
             {
-                MessageBox.Show("Mohon Masukan Data Yang Ingin Dihapus Berdasarkan NISN!", "gagal", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Data Salah Atau Tidak Ada !!", "Gagal", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             else
             {
-                SqlConnection cn = conn.GetConn();
-                cn.Open();
                 SqlCommand cmd = cn.CreateCommand();
                 cmd.CommandType = CommandType.Text;
                 cmd.CommandText = "delete from tb_siswa where nisn = '" + textBox1.Text + "'";
                 cmd.ExecuteNonQuery();
                 refreshData();
-                cn.Close();
                 MessageBox.Show("Data berhasil dihapus", "Berhasil", MessageBoxButtons.OK);
+                cn.Close();
             }
         }
 
-        private void label2_Click(object sender, EventArgs e)
+        private void textBox1_TextChanged(object sender, EventArgs e)
         {
-
+            SqlConnection cn = conn.GetConn();
+            cn.Open();
+            SqlCommand cmd = new SqlCommand("select * from tb_siswa where nisn = '"+textBox1.Text+"'", cn);
+            cmd.ExecuteNonQuery();
+            SqlDataReader dr = cmd.ExecuteReader();
+            if (dr.HasRows)
+            {
+                while (dr.Read())
+                {
+                    textBox2.Text = (string)dr["nis"].ToString();
+                    textBox3.Text = (string)dr["nama"].ToString();
+                    textBox4.Text = (string)dr["password"].ToString();
+                    textBox5.Text = (string)dr["alamat"].ToString();
+                    textBox6.Text = (string)dr["no_telp"].ToString();
+                }
+            }
+            else
+            {
+                textBox2.Text = "";
+                textBox3.Text = "";
+                textBox4.Text = "";
+                textBox5.Text = "";
+                textBox6.Text = "";
+            }
+            cn.Close();
         }
 
-        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
+        private void button1_Click(object sender, EventArgs e)
         {
+            refreshData();
+        }
 
+        private void textBox1_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) && (e.KeyChar != '.'))
+            {
+                e.Handled = true;
+            }
+
+            if ((e.KeyChar == '.') && ((sender as TextBox).Text.IndexOf('.') > -1))
+            {
+                e.Handled = true;
+
+            }
+        }
+
+        private void textBox2_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) && (e.KeyChar != '.'))
+            {
+                e.Handled = true;
+            }
+
+            if ((e.KeyChar == '.') && ((sender as TextBox).Text.IndexOf('.') > -1))
+            {
+                e.Handled = true;
+
+            }
+        }
+
+        private void textBox6_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) && (e.KeyChar != '.'))
+            {
+                e.Handled = true;
+            }
+
+            if ((e.KeyChar == '.') && ((sender as TextBox).Text.IndexOf('.') > -1))
+            {
+                e.Handled = true;
+
+            }
         }
     }
 }

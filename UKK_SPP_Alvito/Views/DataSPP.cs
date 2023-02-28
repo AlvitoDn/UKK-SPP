@@ -68,15 +68,17 @@ namespace UKK_SPP_Alvito.Views
         private void buttonUpdate_Click(object sender, EventArgs e)
         {
             SqlConnection cn = conn.GetConn();
-            if (textBox1.Text == string.Empty || textBox2.Text == string.Empty || textBox3.Text == string.Empty)
+            cn.Open();
+            SqlCommand com = new SqlCommand("select id_spp from tb_spp where id_spp = '" + textBox1.Text + "'", cn);
+            SqlDataReader dr = com.ExecuteReader();
+            if (textBox1.Text == string.Empty || !dr.HasRows)
             {
-                MessageBox.Show("Tidak Boleh Ada Yang Kosong! Mohon Masukan Ulang Semua Data!", "Gagal", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Update Gagal !! Data Tidak Dapat Ditemukan!", "Gagal", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             else
             {
                 SqlCommand cmd = new SqlCommand("Update [tb_spp] Set Tahun = '" + textBox2.Text + "', nominal = '" + textBox3.Text + "' where id_spp = '" + textBox1.Text + "'", cn);
                 cmd.CommandType = CommandType.Text;
-                cn.Open();
                 cmd.ExecuteNonQuery();
                 MessageBox.Show("Update Data Berhasil", "berhasil", MessageBoxButtons.OK);
                 refreshData();
@@ -87,7 +89,7 @@ namespace UKK_SPP_Alvito.Views
         private void buttonAdd_Click(object sender, EventArgs e)
         {
             SqlConnection cn = conn.GetConn();
-            if (textBox2.Text != string.Empty || textBox3.Text != string.Empty)
+            if (Validation())
             {
                 SqlCommand cmd = new SqlCommand("Insert into [tb_spp] (tahun,nominal) values ('" + textBox2.Text + "','" + textBox3.Text + "')", cn);
                 cmd.CommandType = CommandType.Text;
@@ -105,22 +107,88 @@ namespace UKK_SPP_Alvito.Views
 
         private void buttonDelete_Click(object sender, EventArgs e)
         {
-            if (textBox1.Text == string.Empty)
+            SqlConnection cn = conn.GetConn();
+            cn.Open();
+            SqlCommand com = new SqlCommand("select id_spp from tb_spp where id_spp = '"+textBox1.Text+"'",cn);
+            SqlDataReader dr = com.ExecuteReader();
+            if (!dr.HasRows || textBox1.Text == "")
             {
-                MessageBox.Show("Mohon Masukan Data Yang Ingin Dihapus Berdasarkan ID SPP!", "Gagal", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Data Salah Atau Tidak Ada !!", "Gagal", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             else
             {
-                SqlConnection cn = conn.GetConn();
-                cn.Open();
                 SqlCommand cmd = cn.CreateCommand();
                 cmd.CommandType = CommandType.Text;
                 cmd.CommandText = "delete from tb_spp where id_spp = '" + textBox1.Text + "'";
                 cmd.ExecuteNonQuery();
                 refreshData();
-                cn.Close();
                 MessageBox.Show("Data berhasil dihapus", "Berhasil", MessageBoxButtons.OK);
+                cn.Close();
             }
+        }
+
+        private void textBox2_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) && (e.KeyChar != '.'))
+            {
+                e.Handled = true;
+            }
+
+            if ((e.KeyChar == '.') && ((sender as TextBox).Text.IndexOf('.') > -1))
+            {
+                e.Handled = true;
+
+            }
+        }
+
+        private void textBox3_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) && (e.KeyChar != '.'))
+            {
+                e.Handled = true;
+            }
+        }
+
+        private void textBox1_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) && (e.KeyChar != '.'))
+            {
+                e.Handled = true;
+            }
+
+            if ((e.KeyChar == '.') && ((sender as TextBox).Text.IndexOf('.') > -1))
+            {
+                e.Handled = true;
+
+            }
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            refreshData();
+        }
+
+        private void textBox1_TextChanged(object sender, EventArgs e)
+        {
+            SqlConnection cn = conn.GetConn();
+            cn.Open();
+            SqlCommand cmd = new SqlCommand("select * from tb_spp where id_spp = '" + textBox1.Text + "'", cn);
+            cmd.ExecuteNonQuery();
+            SqlDataReader dr = cmd.ExecuteReader();
+            if (dr.HasRows)
+            {
+                while (dr.Read())
+                {
+                    textBox2.Text = (string)dr["tahun"].ToString();
+                    textBox3.Text = (string)dr["nominal"].ToString();
+                }
+            }
+            else
+            {
+                textBox2.Text = "";
+                textBox3.Text = "";
+            }
+            cn.Close();
         }
     }
 }
